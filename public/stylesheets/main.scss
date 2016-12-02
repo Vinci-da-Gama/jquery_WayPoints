@@ -23,6 +23,10 @@ body.basictorso {
     @include fontSmooth();
 }
 
+.bg-green {
+    background-color: #3498db;
+}
+
 .navbar {
 	-webkit-border-radius: 0px;
 	   -moz-border-radius: 0px;

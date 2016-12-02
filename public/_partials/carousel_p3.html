@@ -1,3 +1,9 @@
-<div>
-    carousel
+<div class="container well well-lg bg-green">
+	<slick ng-if="true" settings="wuhaSlickConfig">
+		<div ng-repeat="each in numsCollection track by $index">
+			<div>
+				{{each.label}}
+			</div>
+		</div>
+	</slick>
 </div>
