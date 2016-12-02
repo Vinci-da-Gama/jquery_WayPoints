@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Vinci-da-Gama/jquery_WayPoints#readme",
   "dependencies": {
+    "angular-slick-carousel": "^3.1.7",
+    "axios": "^0.15.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",

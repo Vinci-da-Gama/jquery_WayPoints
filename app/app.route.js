@@ -1,39 +1,58 @@
 (function () {
 	var rM = angular.module('WayPointBsValidation.router');
 
-	rM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+	rM.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
+		$urlRouterProvider.when('', '/');
+		$urlRouterProvider.when('/index', '/');
+		$urlRouterProvider.when('/home', '/');
 		$urlRouterProvider.otherwise('/');
+
 		$stateProvider
 		.state('/', {
 			url: '/',
-			templateUrl: 'index.html',
+			templateUrl: './_partials/home.html',
 			controller: 'homeCtrl',
-			controllerAs: 'hc',
+			controllerAs: 'hc'
+		})
+		.state('homelist', {
+			url: '/.hlist',
+			templateUrl: './_partials/home-list.html',
+			controller: 'homeListCtrl',
+			controllerAs: 'hlc'
+		})
+		.state('homevtabs', {
+			url: '/.hvtabs',
+			templateUrl: './_partials/home-verticaltabs.html',
+			controller: 'homeVerticalTabsCtrl',
+			controllerAs: 'hvtc'
+		})
+		.state('about', {
+			url: '/about',
 			views: {
-                'homeLeft': {
-                	templateUrl: './_partials/homeL.html',
-                	controller: 'homeLCtrl',
-                	controllerAs: 'hlc'
-                },
-                'homeRight': {
-                    templateUrl: './_partials/homeR.html',
-                    controller: 'homeRCtrl',
-                    controllerAs: 'hrc'
-                }
-            }
+				'': {
+					templateUrl: './_partials/about.html',
+					controller: 'aboutCtrl',
+					controllerAs: 'ac'
+				},
+				'alJwp@about': {
+					templateUrl: './_partials/jqWayPoints.html',
+					controller: 'aljwpCtrl',
+					controllerAs: 'jwpc'
+				},
+				'arTr@about': {
+					templateUrl: './_partials/tableResponsive.html',
+					controller: 'artrCtrl',
+					controllerAs: 'trc'
+				}
+			}
 		})
-		.state('p1', {
-			url: '/p1',
-			templateUrl: './_partials/p1.html',
-			controller: 'p1Ctrl',
-			controllerAs: 'p1c'
-		})
-		.state('p2', {
-			url: '/p2',
-			templateUrl: './_partials/p2.html',
-			controller: 'p2Ctrl',
-			controllerAs: 'p2c'
+		.state('p3carousel', {
+			url: '/carousel',
+			templateUrl: './_partials/carousel_p3.html',
+			controller: 'carouselCtrl',
+			controllerAs: 'caroC'
 		});
+
 	}]);
 
 })();

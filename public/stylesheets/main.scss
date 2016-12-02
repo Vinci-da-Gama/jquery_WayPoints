@@ -1,9 +1,8 @@
 /* CSS Document */
+
 @import "./variables.scss";
 @import "./mixins.scss";
 @import "./mediaQuery.scss";
-
-
 $zp:0px;
 $bgAisle:"../_img/flags.jpg";
 $bgVertical: top;
@@ -11,12 +10,33 @@ $bgHorizontal: center;
 $bgRepeat: no-repeat;
 $bgSize: cover;
 $bgBlue: rgba(20, 120, 200, .99);
-/* vender prefix */
-$venderList: "-webkit-", "-moz-", "-ms-", "-o-", "";
 
-body.basictorso
-{
-	@include extendFlex($zp);
-	@include fontSmooth();
+/* vender prefix */
+
+$venderList: "-webkit-",
+"-moz-",
+"-ms-",
+"-o-",
+"";
+body.basictorso {
+    @include extendFlex($zp);
+    @include fontSmooth();
 }
 
+.navbar {
+	-webkit-border-radius: 0px;
+	   -moz-border-radius: 0px;
+	    -ms-border-radius: 0px;
+	     -o-border-radius: 0px;
+	        border-radius: 0px;
+}
+
+.slider-outline {
+    border: 2px solid deepskyblue;
+    .slider-itself {
+        min-width: 100px;
+        min-height: 150px;
+        font-size: 2em;
+        color: coral;
+    }
+}

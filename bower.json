@@ -6,7 +6,6 @@
   "dependencies": {
     "ngMask": "angular-mask#^3.1.1",
     "jquery": "2.2.4",
-    "bootstrap": "^3.3.7",
     "moment": "^2.15.1",
     "angular": "^1.5.8",
     "angular-ui-router": "^0.3.1",
@@ -21,7 +20,8 @@
     "modernizr": "^3.3.1",
     "angular-bootstrap-lightbox": "^0.12.0",
     "animate.css": "^3.5.2",
-    "waypoints": "^4.0.1"
+    "waypoints": "^4.0.1",
+    "bootstrap": "3.1.1"
   },
   "devDependencies": {}
 }

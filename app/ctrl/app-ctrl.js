@@ -1,24 +1,31 @@
-(function () {
-	var ctrlM = angular.module('WayPointBsValidation.ctrl');
+(function() {
+    var ctrlM = angular.module('WayPointBsValidation.ctrl');
 
-	ctrlM.controller('homeCtrl', ['$scope', '$log', function($scope, $log){
-		$log.log('homeCtrl as hc');
-	}]);
-
-	ctrlM.controller('homeLCtrl', ['$scope', '$log', function($scope, $log){
-		$log.log('homeLCtrl as hlc');
-	}]);
-
-	ctrlM.controller('homeRCtrl', ['$scope', '$log', function($scope, $log){
-		$log.log('homeRCtrl as hrc');
-	}]);
-
-	ctrlM.controller('p1Ctrl', ['$scope', '$log', function($scope, $log){
-		$log.log('p1Ctrl as p1c');
-	}]);
-
-	ctrlM.controller('p2Ctrl', ['$scope', '$log', function($scope, $log){
-		$log.log('p2Ctrl as p2c');
-	}]);
-
+   ctrlM.controller('homeCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('5 -- homeCtrl');
+   }]);
+   
+   ctrlM.controller('homeListCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('8 -- homeListCtrl');
+   }]);
+   
+   ctrlM.controller('homeVerticalTabsCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('11 -- homeVerticalTabsCtrl');
+   }]);
+   
+   ctrlM.controller('aboutCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('14 -- aboutCtrl');
+   }]);
+   
+   ctrlM.controller('aljwpCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('17 -- aljwpCtrl');
+   }]);
+   
+   ctrlM.controller('artrCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('20 -- artrCtrl');
+   }]);
+   
+   ctrlM.controller('carouselCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('23 -- carouselCtrl');
+   }]);
 })();

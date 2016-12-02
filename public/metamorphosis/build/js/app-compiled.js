@@ -1,96 +1,122 @@
-(function () {
+(function() {
 
-	var anguNg = ['ngAria', 'ngSanitize', 'ngAnimate', 'ngMessages', 'ngNotify', 'ngMask'];
-	var anguEx = ['ui.bootstrap', 'mgcrea.ngStrap', 'bootstrapLightbox'];
-	var routerCtrl = ['WayPointBsValidation.router', 'WayPointBsValidation.ctrl'];
-	var cons = ['WayPointBsValidation.constant'];
-	var serv = ['WayPointBsValidation.sig.service', 'WayPointBsValidation.service', 'WayPointBsValidation.promise.factory'];
-	var dir = ['WayPointBsValidation.dir', 'WayPointBsValidation.cust.dir'];
+    var anguNg = ['ngAria', 'ngSanitize', 'ngAnimate', 'ngMessages', 'ngNotify', 'ngMask', 'slickCarousel'];
+    var anguEx = ['ui.bootstrap', 'mgcrea.ngStrap', 'bootstrapLightbox'];
+    var routerCtrl = ['WayPointBsValidation.router', 'WayPointBsValidation.ctrl'];
+    var cons = ['WayPointBsValidation.constant'];
+    var serv = ['WayPointBsValidation.sig.service', 'WayPointBsValidation.service', 'WayPointBsValidation.promise.factory'];
+    var dir = ['WayPointBsValidation.dir', 'WayPointBsValidation.cust.dir'];
 
-	var depedencyArr = anguNg.concat(anguEx, routerCtrl, cons, serv, dir);
-	/**
-	* WayPointBsValidation Module
-	*
-	* The main module of this application...
-	*/
-	angular.module('WayPointBsValidation', depedencyArr);
+    var depedencyArr = anguNg.concat(anguEx, routerCtrl, cons, serv, dir);
+    /**
+     * WayPointBsValidation Module
+     *
+     * The main module of this application...
+     */
+    angular.module('WayPointBsValidation', depedencyArr);
 
-	angular.module('WayPointBsValidation.router', ['ui.router']);
-	angular.module('WayPointBsValidation.constant', []);
-	angular.module('WayPointBsValidation.sig.service', []);
-	angular.module('WayPointBsValidation.service', []);
-	angular.module('WayPointBsValidation.promise.factory', []);
-	angular.module('WayPointBsValidation.ctrl', []);
-	angular.module('WayPointBsValidation.dir', ['WayPointBsValidation.service', 'WayPointBsValidation.sig.service']);
-	angular.module('WayPointBsValidation.cust.dir', ['WayPointBsValidation.service', 'WayPointBsValidation.sig.service']);
+    angular.module('WayPointBsValidation.router', ['ui.router']);
+    angular.module('WayPointBsValidation.constant', []);
+    angular.module('WayPointBsValidation.sig.service', []);
+    angular.module('WayPointBsValidation.service', []);
+    angular.module('WayPointBsValidation.promise.factory', []);
+    angular.module('WayPointBsValidation.ctrl', []);
+    angular.module('WayPointBsValidation.dir', ['WayPointBsValidation.service', 'WayPointBsValidation.sig.service']);
+    angular.module('WayPointBsValidation.cust.dir', ['WayPointBsValidation.service', 'WayPointBsValidation.sig.service']);
 
 })();
 (function () {
 	var rM = angular.module('WayPointBsValidation.router');
 
-	rM.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+	rM.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
+		$urlRouterProvider.when('', '/');
+		$urlRouterProvider.when('/index', '/');
+		$urlRouterProvider.when('/home', '/');
 		$urlRouterProvider.otherwise('/');
+
 		$stateProvider
 		.state('/', {
 			url: '/',
-			templateUrl: 'index.html',
+			templateUrl: './_partials/home.html',
 			controller: 'homeCtrl',
-			controllerAs: 'hc',
+			controllerAs: 'hc'
+		})
+		.state('homelist', {
+			url: '/.hlist',
+			templateUrl: './_partials/home-list.html',
+			controller: 'homeListCtrl',
+			controllerAs: 'hlc'
+		})
+		.state('homevtabs', {
+			url: '/.hvtabs',
+			templateUrl: './_partials/home-verticaltabs.html',
+			controller: 'homeVerticalTabsCtrl',
+			controllerAs: 'hvtc'
+		})
+		.state('about', {
+			url: '/about',
 			views: {
-                'homeLeft': {
-                	templateUrl: './_partials/homeL.html',
-                	controller: 'homeLCtrl',
-                	controllerAs: 'hlc'
-                },
-                'homeRight': {
-                    templateUrl: './_partials/homeR.html',
-                    controller: 'homeRCtrl',
-                    controllerAs: 'hrc'
-                }
-            }
+				'': {
+					templateUrl: './_partials/about.html',
+					controller: 'aboutCtrl',
+					controllerAs: 'ac'
+				},
+				'alJwp@about': {
+					templateUrl: './_partials/jqWayPoints.html',
+					controller: 'aljwpCtrl',
+					controllerAs: 'jwpc'
+				},
+				'arTr@about': {
+					templateUrl: './_partials/tableResponsive.html',
+					controller: 'artrCtrl',
+					controllerAs: 'trc'
+				}
+			}
 		})
-		.state('p1', {
-			url: '/p1',
-			templateUrl: './_partials/p1.html',
-			controller: 'p1Ctrl',
-			controllerAs: 'p1c'
-		})
-		.state('p2', {
-			url: '/p2',
-			templateUrl: './_partials/p2.html',
-			controller: 'p2Ctrl',
-			controllerAs: 'p2c'
+		.state('p3carousel', {
+			url: '/carousel',
+			templateUrl: './_partials/carousel_p3.html',
+			controller: 'carouselCtrl',
+			controllerAs: 'caroC'
 		});
-	}]);
 
-})();
-(function () {
-	var ctrlM = angular.module('WayPointBsValidation.ctrl');
-
-	ctrlM.controller('homeCtrl', ['$scope', '$log', function($scope, $log){
-		$log.log('homeCtrl as hc');
-	}]);
-
-	ctrlM.controller('homeLCtrl', ['$scope', '$log', function($scope, $log){
-		$log.log('homeLCtrl as hlc');
-	}]);
-
-	ctrlM.controller('homeRCtrl', ['$scope', '$log', function($scope, $log){
-		$log.log('homeRCtrl as hrc');
-	}]);
-
-	ctrlM.controller('p1Ctrl', ['$scope', '$log', function($scope, $log){
-		$log.log('p1Ctrl as p1c');
-	}]);
-
-	ctrlM.controller('p2Ctrl', ['$scope', '$log', function($scope, $log){
-		$log.log('p2Ctrl as p2c');
 	}]);
 
 })();
 (function () {
 	var cosM = angular.module('WayPointBsValidation.constant');
 
+})();
+(function() {
+    var ctrlM = angular.module('WayPointBsValidation.ctrl');
+
+   ctrlM.controller('homeCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('5 -- homeCtrl');
+   }]);
+   
+   ctrlM.controller('homeListCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('8 -- homeListCtrl');
+   }]);
+   
+   ctrlM.controller('homeVerticalTabsCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('11 -- homeVerticalTabsCtrl');
+   }]);
+   
+   ctrlM.controller('aboutCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('14 -- aboutCtrl');
+   }]);
+   
+   ctrlM.controller('aljwpCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('17 -- aljwpCtrl');
+   }]);
+   
+   ctrlM.controller('artrCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('20 -- artrCtrl');
+   }]);
+   
+   ctrlM.controller('carouselCtrl', ['$scope', '$log', function($scope, $log){
+   		$log.log('23 -- carouselCtrl');
+   }]);
 })();
 (function () {
 	var cdM = angular.module('WayPointBsValidation.cust.dir');
