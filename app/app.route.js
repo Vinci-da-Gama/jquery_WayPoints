@@ -4,24 +4,23 @@
 	rM.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 		$urlRouterProvider.when('', '/');
 		$urlRouterProvider.when('/index', '/');
-		$urlRouterProvider.when('/home', '/');
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
-		.state('/', {
+		.state('home', {
 			url: '/',
 			templateUrl: './_partials/home.html',
 			controller: 'homeCtrl',
 			controllerAs: 'hc'
 		})
-		.state('homelist', {
-			url: '/.hlist',
+		.state('home.hl', {
+			url: '/homelist',
 			templateUrl: './_partials/home-list.html',
 			controller: 'homeListCtrl',
 			controllerAs: 'hlc'
 		})
-		.state('homevtabs', {
-			url: '/.hvtabs',
+		.state('home.hvt', {
+			url: '/homevtabs',
 			templateUrl: './_partials/home-verticaltabs.html',
 			controller: 'homeVerticalTabsCtrl',
 			controllerAs: 'hvtc'

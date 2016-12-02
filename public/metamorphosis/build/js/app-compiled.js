@@ -31,24 +31,23 @@
 	rM.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 		$urlRouterProvider.when('', '/');
 		$urlRouterProvider.when('/index', '/');
-		$urlRouterProvider.when('/home', '/');
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
-		.state('/', {
+		.state('home', {
 			url: '/',
 			templateUrl: './_partials/home.html',
 			controller: 'homeCtrl',
 			controllerAs: 'hc'
 		})
-		.state('homelist', {
-			url: '/.hlist',
+		.state('home.hl', {
+			url: '/homelist',
 			templateUrl: './_partials/home-list.html',
 			controller: 'homeListCtrl',
 			controllerAs: 'hlc'
 		})
-		.state('homevtabs', {
-			url: '/.hvtabs',
+		.state('home.hvt', {
+			url: '/homevtabs',
 			templateUrl: './_partials/home-verticaltabs.html',
 			controller: 'homeVerticalTabsCtrl',
 			controllerAs: 'hvtc'
@@ -90,30 +89,35 @@
 (function() {
     var ctrlM = angular.module('WayPointBsValidation.ctrl');
 
-   ctrlM.controller('homeCtrl', ['$scope', '$log', function($scope, $log){
+   ctrlM.controller('homeCtrl', ['$scope', '$log', 'ListFactory', function($scope, $log, ListFactory){
    		$log.log('5 -- homeCtrl');
+   		ListFactory.fetchListFromMyJson(grabHomeList);
+
+   		function grabHomeList(testimony) {
+   			$scope.listAry = testimony.data;
+   		};
    }]);
-   
+
    ctrlM.controller('homeListCtrl', ['$scope', '$log', function($scope, $log){
    		$log.log('8 -- homeListCtrl');
    }]);
-   
+
    ctrlM.controller('homeVerticalTabsCtrl', ['$scope', '$log', function($scope, $log){
    		$log.log('11 -- homeVerticalTabsCtrl');
    }]);
-   
+
    ctrlM.controller('aboutCtrl', ['$scope', '$log', function($scope, $log){
    		$log.log('14 -- aboutCtrl');
    }]);
-   
+
    ctrlM.controller('aljwpCtrl', ['$scope', '$log', function($scope, $log){
    		$log.log('17 -- aljwpCtrl');
    }]);
-   
+
    ctrlM.controller('artrCtrl', ['$scope', '$log', function($scope, $log){
    		$log.log('20 -- artrCtrl');
    }]);
-   
+
    ctrlM.controller('carouselCtrl', ['$scope', '$log', function($scope, $log){
    		$log.log('23 -- carouselCtrl');
    }]);
@@ -133,7 +137,21 @@
 (function () {
 	var promiseM = angular.module('WayPointBsValidation.promise.factory');
 
-	// promiseM
+	promiseM.factory('ListFactory', ['$http', '$q', function($http, $q){
+		var listFactoryObj = {};
+		listFactoryObj.fetchListFromMyJson = function (cb) {
+			var listUrl = 'https://api.myjson.com/bins/3ss6j';
+			$http.get(listUrl)
+			.then(function (resp) {
+				console.log('10 -- resp is: ', resp);
+				cb(resp);
+			}, function (err) {
+				console.log('13 -- err is: ', err);
+			})
+		};
+
+		return listFactoryObj;
+	}]);
 
 })();
 // service js Document

@@ -1,6 +1,5 @@
 # jquery_WayPoints
-0. axios
-0.1. $q resolve
+0. callback fetch data and data from parent scopt to children scope.
 1. Table Responsive
 2. slider
 3. vertical tabs
