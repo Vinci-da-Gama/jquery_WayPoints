@@ -2,7 +2,8 @@
 
 @import "./variables.scss";
 @import "./mixins.scss";
-@import "./mediaQuery.scss";
+@import "./responsive_table.scss";
+
 $zp:0px;
 $bgAisle:"../_img/flags.jpg";
 $bgVertical: top;
@@ -35,6 +36,22 @@ body.basictorso {
 	        border-radius: 0px;
 }
 
+.opacity-0begin {
+    opacity: 0;
+}
+
+.flex-100per {
+    display: inline-flex;
+    width: 100%;
+    > ul {
+        min-width: 200px;
+    }
+}
+
+.width-100per {
+    width: 100%;
+}
+
 .slider-outline {
     border: 2px solid deepskyblue;
     .slider-itself {
@@ -44,3 +61,5 @@ body.basictorso {
         color: coral;
     }
 }
+
+@import "./mediaQuery.scss";

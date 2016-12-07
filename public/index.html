@@ -10,7 +10,7 @@
     <!-- tab-icon -->
     <link rel="icon" href="./metamorphosis/_img/test.png" type="image/x-icon">
     <!-- traceur for es6 -->
-    <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+    <script src="//google.github.io/traceur-compiler/bin/traceur.js"></script>
     <!-- minify lib css -->
     <link rel="stylesheet" href="./metamorphosis/_mincss/lib-css-min.css">
     <!-- compiled-lib-js -->
@@ -41,7 +41,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse jqvttrsc-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- <li><a href="#">Link</a></li> -->
+                    <li>
+                        <a ui-sref="home">Sample_Link_0</a>
+                    </li>
+                    <li>
+                        <a ui-sref="home">Sample_Link_1</a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Three_Links_In_Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -60,10 +65,12 @@
             </div>
         </div>
     </div>
+    
 	<div ui-view></div>
 </body>
 <!-- compiled-app-js -->
 <script type="text/javascript" language="javascript" src="./metamorphosis/build/js/app-compiled.js"></script>
+<script type="text/javascript" language="javascript" src="./javascripts/cust.js"></script>
 <!-- product css -->
 <link rel="stylesheet" href="./metamorphosis/_mincss/app.min.css">
 

@@ -1,3 +1,22 @@
-<div>
-	Table_Responsive
+<div id="search-List_container">
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Title</th>
+				<th>Age</th>
+				<th>Categories</th>
+				<th>Content</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="kaka in listAry track by $index">
+				<td>{{kaka.name}}</td>
+				<td>{{kaka.title}}</td>
+				<td>{{kaka.age}}</td>
+				<td>{{kaka.categories}}</td>
+				<td>{{kaka.content}}</td>
+			</tr>
+		</tbody>
+	</table>
 </div>

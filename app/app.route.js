@@ -16,12 +16,14 @@
 		.state('home.hl', {
 			url: '/homelist',
 			templateUrl: './_partials/home-list.html',
+			parent: 'home',
 			controller: 'homeListCtrl',
 			controllerAs: 'hlc'
 		})
 		.state('home.hvt', {
 			url: '/homevtabs',
 			templateUrl: './_partials/home-verticaltabs.html',
+			parent: 'home',
 			controller: 'homeVerticalTabsCtrl',
 			controllerAs: 'hvtc'
 		})
@@ -41,7 +43,8 @@
 				'arTr@about': {
 					templateUrl: './_partials/tableResponsive.html',
 					controller: 'artrCtrl',
-					controllerAs: 'trc'
+					controllerAs: 'trc',
+
 				}
 			}
 		})

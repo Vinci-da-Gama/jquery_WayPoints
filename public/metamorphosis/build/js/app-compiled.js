@@ -43,12 +43,14 @@
 		.state('home.hl', {
 			url: '/homelist',
 			templateUrl: './_partials/home-list.html',
+			parent: 'home',
 			controller: 'homeListCtrl',
 			controllerAs: 'hlc'
 		})
 		.state('home.hvt', {
 			url: '/homevtabs',
 			templateUrl: './_partials/home-verticaltabs.html',
+			parent: 'home',
 			controller: 'homeVerticalTabsCtrl',
 			controllerAs: 'hvtc'
 		})
@@ -68,7 +70,8 @@
 				'arTr@about': {
 					templateUrl: './_partials/tableResponsive.html',
 					controller: 'artrCtrl',
-					controllerAs: 'trc'
+					controllerAs: 'trc',
+
 				}
 			}
 		})
@@ -96,33 +99,48 @@
         function grabHomeList(testimony) {
             $scope.listAry = testimony.data;
         };
+
     }]);
 
     ctrlM.controller('homeListCtrl', ['$scope', '$log', function($scope, $log) {
-        $log.log('8 -- homeListCtrl');
+        $log.log('15 -- homeListCtrl');
     }]);
 
     ctrlM.controller('homeVerticalTabsCtrl', ['$scope', '$log', function($scope, $log) {
-        $log.log('11 -- homeVerticalTabsCtrl');
+        $log.log('19 -- homeVerticalTabsCtrl');
     }]);
 
     ctrlM.controller('aboutCtrl', ['$scope', '$log', function($scope, $log) {
-        $log.log('14 -- aboutCtrl');
+        $log.log('19 -- aboutCtrl');
     }]);
 
     ctrlM.controller('aljwpCtrl', ['$scope', '$log', function($scope, $log) {
-        $log.log('17 -- aljwpCtrl');
+        $log.log('30 -- aljwpCtrl');
+        var imgElem = angular.element(document.querySelector('.theimg-jqPointway'));
+        console.log('32 -- imgElem is: ', imgElem);
+        imgElem.waypoint((direction) => {
+            if (direction === 'down' && !imgElem.hasClass('animated')) {
+                imgElem.removeClass('opacity-0begin');
+                imgElem.addClass('animated fadeInUp');
+            }
+        }, {offset: '50%'});
     }]);
 
-    ctrlM.controller('artrCtrl', ['$scope', '$log', function($scope, $log) {
-        $log.log('20 -- artrCtrl');
+    ctrlM.controller('artrCtrl', ['$scope', '$log', 'ListFactory', function($scope, $log, ListFactory) {
+        $log.log('40 -- artrCtrl');
+        ListFactory.fetchListFromMyJson(grabHomeList);
+
+        function grabHomeList(testimony) {
+            $scope.listAry = testimony.data;
+        };
     }]);
 
     ctrlM.controller('carouselCtrl', ['$scope', '$log', function($scope, $log) {
-        $log.log('23 -- carouselCtrl');
+        $log.log('47 -- carouselCtrl');
         $scope.numsCollection = [
             { label: 1 }, { label: 2 }, { label: 3 }, { label: 4 }, { label: 5 }, { label: 6 }, { label: 7 }, { label: 8 }
         ];
+
         $scope.wuhaSlickConfig = {
             enabled: true,
             draggable: false,
@@ -155,7 +173,6 @@
                 }
             }]
         };
-
     }]);
 
 })();
@@ -163,7 +180,24 @@
 (function () {
 	var cdM = angular.module('WayPointBsValidation.cust.dir');
 
-	// cdM
+	cdM.directive('listsContent', [function(){
+		return {
+			scope: {
+				'eachDib': '='
+			},
+			controller: function($scope, $element, $attrs, $transclude) {
+				// console.log('10 eachDib is: ', $scope.eachDib);
+			},
+			// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+			restrict: 'E',
+			templateUrl: './_partials/directive-template/each-dib.html',
+			// replace: true,
+			// transclude: true,
+			link: function($scope, iElm, iAttrs, controller) {
+				
+			}
+		};
+	}]);
 
 })();
 (function () {
@@ -178,7 +212,7 @@
 	promiseM.factory('ListFactory', ['$http', '$q', function($http, $q){
 		var listFactoryObj = {};
 		listFactoryObj.fetchListFromMyJson = function (cb) {
-			var listUrl = 'https://api.myjson.com/bins/3ss6j';
+			var listUrl = 'https://api.myjson.com/bins/4hi3h';
 			$http.get(listUrl)
 			.then(function (resp) {
 				console.log('10 -- resp is: ', resp);

@@ -4,7 +4,7 @@
 	promiseM.factory('ListFactory', ['$http', '$q', function($http, $q){
 		var listFactoryObj = {};
 		listFactoryObj.fetchListFromMyJson = function (cb) {
-			var listUrl = 'https://api.myjson.com/bins/3ss6j';
+			var listUrl = 'https://api.myjson.com/bins/4hi3h';
 			$http.get(listUrl)
 			.then(function (resp) {
 				console.log('10 -- resp is: ', resp);
